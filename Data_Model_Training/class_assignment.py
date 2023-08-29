@@ -10,7 +10,16 @@ for i in ["train_FD001_tabular.csv","train_FD002_tabular.csv","train_FD003_tabul
     label_list = []
     for j in range(len(df["0"])) :
         if j == len(df["0"])-1:
-            label_list.append(2)
+            counter += 1
+            for z in range(counter//3) : 
+                label_list.append(0)
+            for z in range(counter//3) :
+                label_list.append(1)
+            for z in range(counter//3) :
+                label_list.append(2)
+            remainder = counter%3
+            for z in range(remainder):
+                label_list.append(2)
         elif df["0"][j] == df["0"][j+1]: 
             counter += 1
         elif df["0"][j] != df["0"][j+1] : 
@@ -25,7 +34,6 @@ for i in ["train_FD001_tabular.csv","train_FD002_tabular.csv","train_FD003_tabul
             for z in range(remainder):
                 label_list.append(2)
             counter = 1
-    print(overall_counter)
     df["label"] = label_list
-    print(df.head())
+    df.to_csv("CMAPPS_Cleaned_Data/"+i+"_labeled.csv", index=False)
         
