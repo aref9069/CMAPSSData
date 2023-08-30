@@ -6,7 +6,7 @@ for i in ["train_FD001_tabular.csv","train_FD002_tabular.csv","train_FD003_tabul
     df.columns = [str(i) for i in range(0,28)]
     df.drop(["25","26", "27"], axis="columns", inplace=True)
     counter = 0
-    overall_counter = 0 
+    #overall_counter = 0 
     label_list = []
     for j in range(len(df["0"])) :
         if j == len(df["0"])-1:
